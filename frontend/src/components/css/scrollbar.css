@@ -1,0 +1,23 @@
+::-webkit-scrollbar-track {
+    background-color: #f5f5f5; /* Light grey */
+    border-radius: 5px; /* Adjust the border radius as needed */
+}
+
+/* Scrollbar Handle */
+::-webkit-scrollbar-thumb {
+    background-color: #2c2828; /* Grey */
+    border-radius: 5px; /* Adjust the border radius as needed */
+    border: 1px solid #f5f5f5; /* Light grey border */
+    height: 20px !important;
+}
+
+/* Hover styles for the Handle */
+::-webkit-scrollbar-thumb:hover {
+    background-color: #221e1e; /* Darker grey on hover */
+}
+
+/* Set scrollbar dimensions */
+::-webkit-scrollbar {
+    width: 5px; /* Adjust the width as needed */
+    height: 10px; /* Adjust the height as needed */
+}
