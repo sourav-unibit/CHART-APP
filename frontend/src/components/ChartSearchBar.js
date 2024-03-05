@@ -15,6 +15,7 @@ export default function ChartSearchBar() {
     })
     const data=await resData.json()
     console.log(data)
+    setMessage("")
   }
 
   return (
