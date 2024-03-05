@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
     const [userName,setUserName]=useState("");
     const [password,setPassword]=useState("");
+    const navigation=useNavigate()
     const handleSetUserName=async(e)=>{
         setUserName(e.target.value)
     }
@@ -22,6 +24,11 @@ function Login() {
         })
         const userData= await user.json();
         console.log(userData)
+        if(userData.error){
+          alert(userData.error)
+          return
+        }
+        navigation('/chart')
         localStorage.setItem("jwt_token",userData.token)
         localStorage.setItem("userId",userData._id)
         localStorage.setItem("userName",userData.userName)
@@ -55,7 +62,6 @@ function Login() {
               type="userName"
               value={userName}
               onChange={(e)=>handleSetUserName(e)}
-              autoComplete="userName"
               required
               className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
             />
@@ -80,7 +86,6 @@ function Login() {
               id="password"
               name="password"
               type="password"
-              autoComplete="current-password"
               required
               className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 px-2"
             />
@@ -99,8 +104,8 @@ function Login() {
 
       <p className="mt-10 text-center text-sm text-gray-500">
         Not a member?{' '}
-        <a href="#" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
-          Start a 14 day free trial
+        <a href="/signup" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
+          Sign up
         </a>
       </p>
     </div>

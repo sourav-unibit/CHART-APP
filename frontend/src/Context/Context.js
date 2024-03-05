@@ -5,8 +5,11 @@ const MyContext=createContext();
 
 const initialState={
     sliderUser:null,
+    onlineUserInfo:[],
+    
+}
 
-};
+
 export const MyContextProvider=({children})=>{
     const [state,dispatch]=useReducer(Reducer,initialState);
     return(
@@ -15,6 +18,7 @@ export const MyContextProvider=({children})=>{
         </MyContext.Provider>
     )
 }
+
 export default function AllState(){
     const context=useContext(MyContext);
     if(!context){

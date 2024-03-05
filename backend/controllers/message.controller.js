@@ -1,6 +1,5 @@
 const ConversationModel  = require("../models/conversation.model");
 const  MessageModel  = require("../models/message.model");
-const { getReceiverSocketId, io } = require("../socket/socket");
 exports.sendMessage = async (req, res) => {
   try {
     const { message } = req.body;
@@ -36,9 +35,9 @@ exports.sendMessage = async (req, res) => {
 
     //socket
     const reciverSocketId=getReceiverSocketId(reciverId);
-    if(reciverSocketId){
-      io.to(reciverSocketId).emit("newMessage",newMessage)
-    }
+    // if(reciverSocketId){
+    //   io.to(reciverSocketId).emit("newMessage",newMessage)
+    // }
     
     return res.json({
       status:"success",
